@@ -1,11 +1,3 @@
-/**
- * Sanity Schema — Product
- * Copy this into your Sanity Studio schemas folder.
- *
- * File path in Sanity project: schemas/product.js
- * Then import it in schemas/index.js
- */
-
 export default {
   name: 'product',
   title: 'Product',
@@ -15,14 +7,14 @@ export default {
       name: 'name',
       title: 'Product Name',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
       options: { source: 'name', maxLength: 96 },
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'category',
@@ -34,53 +26,51 @@ export default {
           { title: 'Luxury Chandeliers', value: 'chandelier' },
           { title: 'Wall Brackets & Sconces', value: 'wall' },
           { title: 'Rope & Strip Lights', value: 'strip' },
-          { title: 'Electrical Materials', value: 'electrical' }
-        ]
+          { title: 'Electrical Materials', value: 'electrical' },
+        ],
       },
-      validation: Rule => Rule.required()
+      validation: (Rule) => Rule.required(),
     },
     {
       name: 'price',
       title: 'Regular Price (₦)',
       type: 'number',
-      validation: Rule => Rule.required().min(0)
+      validation: (Rule) => Rule.required().min(0),
     },
     {
       name: 'discountPrice',
       title: 'Discount Price (₦) — leave empty if no discount',
-      type: 'number'
+      type: 'number',
     },
     {
       name: 'stock',
       title: 'Stock Quantity',
       type: 'number',
       initialValue: 10,
-      validation: Rule => Rule.required().min(0)
+      validation: (Rule) => Rule.required().min(0),
     },
     {
       name: 'badge',
-      title: 'Badge (optional)',
+      title: 'Badge (e.g. Bestseller, Sale, New)',
       type: 'string',
-      description: 'e.g. Bestseller, Sale, Premium, New'
     },
     {
       name: 'shortDesc',
       title: 'Short Description',
       type: 'text',
-      rows: 2
+      rows: 2,
     },
     {
       name: 'description',
       title: 'Full Description',
       type: 'text',
-      rows: 5
+      rows: 5,
     },
     {
       name: 'images',
       title: 'Product Images',
       type: 'array',
       of: [{ type: 'image', options: { hotspot: true } }],
-      validation: Rule => Rule.min(1)
     },
     {
       name: 'specs',
@@ -91,23 +81,26 @@ export default {
           type: 'object',
           fields: [
             { name: 'label', title: 'Label', type: 'string' },
-            { name: 'value', title: 'Value', type: 'string' }
-          ]
-        }
-      ]
+            { name: 'value', title: 'Value', type: 'string' },
+          ],
+          preview: {
+            select: { title: 'label', subtitle: 'value' },
+          },
+        },
+      ],
     },
     {
       name: 'featured',
       title: 'Featured on Homepage',
       type: 'boolean',
-      initialValue: false
-    }
+      initialValue: false,
+    },
   ],
   preview: {
     select: {
       title: 'name',
       subtitle: 'category',
-      media: 'images.0'
-    }
-  }
+      media: 'images.0',
+    },
+  },
 }
