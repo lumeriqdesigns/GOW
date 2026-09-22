@@ -1,0 +1,213 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Product Name"
+      },
+      {
+        "options": {
+          "source": "name",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "slug",
+        "type": "slug",
+        "title": "Slug (URL)"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Pendant & Dropping Lights",
+              "value": "pendant"
+            },
+            {
+              "title": "Luxury Chandeliers",
+              "value": "chandelier"
+            },
+            {
+              "title": "Wall Brackets & Sconces",
+              "value": "wall"
+            },
+            {
+              "title": "Rope & Strip Lights",
+              "value": "strip"
+            },
+            {
+              "title": "Electrical Materials",
+              "value": "electrical"
+            }
+          ]
+        },
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "pendant",
+                  "chandelier",
+                  "wall",
+                  "strip",
+                  "electrical"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ]
+          }
+        ],
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "name": "price",
+        "type": "number",
+        "title": "Regular Price (₦)"
+      },
+      {
+        "name": "discountPrice",
+        "type": "number",
+        "title": "Discount Price (₦) — leave empty if no discount"
+      },
+      {
+        "initialValue": 10,
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              },
+              {
+                "flag": "min",
+                "constraint": 0
+              }
+            ]
+          }
+        ],
+        "name": "stock",
+        "type": "number",
+        "title": "Stock Quantity"
+      },
+      {
+        "description": "e.g. Bestseller, Sale, Premium, New",
+        "name": "badge",
+        "type": "string",
+        "title": "Badge (optional)"
+      },
+      {
+        "rows": 2,
+        "name": "shortDesc",
+        "type": "text",
+        "title": "Short Description"
+      },
+      {
+        "rows": 5,
+        "name": "description",
+        "type": "text",
+        "title": "Full Description"
+      },
+      {
+        "validation": [
+          {
+            "level": "error",
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ]
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array",
+        "title": "Product Images"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "label",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "type": "string"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "specs",
+        "type": "array",
+        "title": "Specifications"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage"
+      }
+    ],
+    "name": "product",
+    "type": "document"
+  }
+]
